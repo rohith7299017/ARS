@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking System</title>
+    <link rel="stylesheet" href="Booking.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="font-weight: 600;">Flight Booking</h1>
+        <form action="ViewBookedFlights.html" id="bookingForm">
+            <div class="wrap1">
+                <div>
+                    <label for="departure">Departure City:</label>
+                    <select name="from" id="departure" required style="padding-right: 30px;">
+                        <option value="a">Select city</option>
+                        <option value="DEL">Delhi (DEL)</option>
+                        <option value="BOM">Mumbai (BOM)</option>
+                        <option value="BLR">Bengaluru (BLR)</option>
+                        <option value="MAA">Chennai (MAA)</option>
+                        <option value="HYD">Hyderabad (HYD)</option>
+                        <option value="KOL">Kolkata (KOL)</option>
+                        <option value="AMD">Ahmedabad (AMD)</option>
+                        <option value="COK">Kochi (COK)</option>
+                        <option value="GOI">Goa (GOI)</option>
+                        <option value="PNQ">Pune (PNQ)</option>
+                        <option value="IXC">Chandigarh (IXC)</option>
+                        <option value="JAI">Jaipur (JAI)</option>
+                        <option value="PAT">Patna (PAT)</option>
+                        <option value="VNS">Varanasi (VNS)</option>
+                        <option value="TRZ">Tiruchirappalli (TRZ)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="arrival">Arrival City:</label>
+                    <select name="to" id="arrival" required style="padding-right: 60px;">
+                        <option value="none">Select city</option>
+                        <option value="DEL">Delhi (DEL)</option>
+                        <option value="BOM">Mumbai (BOM)</option>
+                        <option value="BLR">Bengaluru (BLR)</option>
+                        <option value="MAA">Chennai (MAA)</option>
+                        <option value="HYD">Hyderabad (HYD)</option>
+                        <option value="KOL">Kolkata (KOL)</option>
+                        <option value="AMD">Ahmedabad (AMD)</option>
+                        <option value="COK">Kochi (COK)</option>
+                        <option value="GOI">Goa (GOI)</option>
+                        <option value="PNQ">Pune (PNQ)</option>
+                        <option value="IXC">Chandigarh (IXC)</option>
+                        <option value="JAI">Jaipur (JAI)</option>
+                        <option value="PAT">Patna (PAT)</option>
+                        <option value="VNS">Varanasi (VNS)</option>
+                        <option value="TRZ">Tiruchirappalli (TRZ)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="wrap2">
+                <div>
+                    <label for="date" style="padding-right: 65px;">Date:</label>
+                    <input type="date" id="date" name="date" required style="padding-right: 60px;">
+                </div>
+                <div>
+                    <label for="class" style="padding-right: 43px;">Class:</label>
+                    <select name="class" id="class" style="padding-right: 69px;">
+                        <option value="none">Select Class</option>
+                        <option value="e">Economy</option>
+                        <option value="b">Business</option>
+                        <option value="w">Premium Economy</option>
+                    </select>
+                </div>
+            </div>
+            <div class="wrap1">
+
+                <div>
+                    <label for="adults" style="padding-right: 52px;">Adults:</label>
+                    <input type="number" min="0" id="adults" name="adults" required>
+                </div>
+                <div>
+                    <label for="children" style="padding-right: 22px;">Children:</label>
+                    <input type="number" min="0" id="children" name="children"  style="padding-right: 40px;">
+                </div>
+                <div>
+                    <label for="infants" style="padding-right: 52px;">Infants:</label>
+                    <input type="number" min="0" id="infants" name="infants" >
+                </div>
+
+            </div>
+
+
+           
+            <button type="submit" id="submit">Search Flights</button>
+            
+        </form>
+        <div id="results"></div>
+    </div>
+</body>
+
+</html>
