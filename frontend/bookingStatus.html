@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Status</title>
+    <link rel="stylesheet" href="bookingStatus.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Booking Status</h1>
+        <table class="booked-flights-table">
+            <thead>
+                <tr>
+                    <th>Departure City</th>
+                    <th>Arrival City</th>
+                    <th>Date</th>
+                    <th>Class</th>
+                    <th>Adults</th>
+                    <th>Children</th>
+                    <th>Infants</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="booked-flights">
+                <!-- Booked flights will be displayed here -->
+            </tbody>
+        </table>
+        <form action="Welcome.html">
+            <button class="home-btn">Home</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookedFlightsTbody = document.getElementById('booked-flights');
+            const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails')) || {};
+
+            if (Object.keys(bookingDetails).length > 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${bookingDetails.departure}</td>
+                    <td>${bookingDetails.arrival}</td>
+                    <td>${bookingDetails.date}</td>
+                    <td>${bookingDetails.travelClass}</td>
+                    <td>${bookingDetails.adults}</td>
+                    <td>${bookingDetails.children}</td>
+                    <td>${bookingDetails.infants}</td>
+                    <td><button class="cancel-btn">Cancel</button></td>
+                `;
+                bookedFlightsTbody.appendChild(row);
+            }
+
+            bookedFlightsTbody.addEventListener('click', function(event) {
+                if (event.target.classList.contains('cancel-btn')) {
+                    bookedFlightsTbody.innerHTML = ''; // Clear the booked flights display
+                    localStorage.removeItem('bookingDetails'); // Remove the booking details from local storage
+                    alert('Booking cancelled.'); // Show a cancellation message
+                }
+            });
+        });
+    </script>
+</body>
+</html>

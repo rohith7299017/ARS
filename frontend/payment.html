@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Page</h1>
+        <div id="flight-details"></div>
+        <button id="pay-btn">Pay</button>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const flightDetailsDiv = document.getElementById('flight-details');
+            const selectedFlight = JSON.parse(localStorage.getItem('selectedFlight'));
+
+            if (selectedFlight) {
+                flightDetailsDiv.innerHTML = `
+                    <p>Flight Name: ${selectedFlight.flightName}</p>
+                    <p>Departure Time: ${selectedFlight.departure}</p>
+                    <p>Arrival Time: ${selectedFlight.arrival}</p>
+                `;
+            }
+
+            document.getElementById('pay-btn').addEventListener('click', function() {
+                // Simulate payment success
+                alert('Payment successful!');
+
+                // Store the booked flight in local storage
+                let bookedFlights = JSON.parse(localStorage.getItem('bookedFlights')) || [];
+                bookedFlights.push(selectedFlight);
+                localStorage.setItem('bookedFlights', JSON.stringify(bookedFlights));
+
+                // Redirect to booking status page
+                window.location.href = 'bookingStatus.html';
+            });
+        });
+    </script>
+</body>
+</html>

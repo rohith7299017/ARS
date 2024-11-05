@@ -8,7 +8,6 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f0f0f0; /* Soft background */
-    
 }
 
 header {
@@ -16,7 +15,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #000; /* Red top line */
+    background-color: #000; /* Black top line */
     color: white;
 }
 
@@ -27,7 +26,6 @@ header .logo h1 {
     -webkit-background-clip: text; /* Clips the background to the text */
     -webkit-text-fill-color: transparent; /* Makes the text itself transparent */
 }
-
 
 header .top-buttons {
     display: flex;
@@ -45,11 +43,12 @@ header .top-buttons button {
     transition: background-color 0.3s;
 }
 
-h1{
-    cursor: pointer;
-}
 header .top-buttons button:hover {
     background-color: #2980b9; /* Darker blue on hover */
+}
+
+h1 {
+    cursor: pointer;
 }
 
 /* Main section */
@@ -108,17 +107,34 @@ header .top-buttons button:hover {
     background-color: #c0392b; /* Darker red on hover */
 }
 
+.view-booked-btn {
+    background-color: #2ecc71; /* Green for the button */
+    color: white;
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.view-booked-btn:hover {
+    background-color: #27ae60; /* Darker green on hover */
+}
+
 /* Responsiveness */
 @media (max-width: 768px) {
     .welcome {
         font-size: 80px;
     }
-    
+
     .info {
         font-size: 18px;
     }
 
-    .book-btn {
+    .book-btn,
+    .view-booked-btn {
         padding: 12px 24px;
         font-size: 18px;
     }
@@ -138,7 +154,8 @@ header .top-buttons button:hover {
         font-size: 16px;
     }
 
-    .book-btn {
+    .book-btn,
+    .view-booked-btn {
         padding: 10px 20px;
     }
 

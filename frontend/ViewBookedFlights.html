@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Flights</title>
-    <link rel="stylesheet" href="ViewBookedFlights.css">
+    <link rel="stylesheet" href="VBF.css">
 </head>
-
 <body>
     <div class="container">
         <h1>Available Flights</h1>
@@ -25,31 +23,41 @@
                     <td>Flight1</td>
                     <td>09:00 AM</td>
                     <td>12:00 PM</td>
-                    <td><button class="book-btn">Book</button></td>
+                    <td><button class="book-btn" data-flight="Flight1" data-departure="09:00 AM" data-arrival="12:00 PM">Book</button></td>
                 </tr>
                 <tr>
                     <td>Flight2</td>
                     <td>10:00 AM</td>
                     <td>01:00 PM</td>
-                    <td><button class="book-btn">Book</button></td>
+                    <td><button class="book-btn" data-flight="Flight2" data-departure="10:00 AM" data-arrival="01:00 PM">Book</button></td>
                 </tr>
                 <tr>
                     <td>Flight3</td>
                     <td>11:00 AM</td>
                     <td>02:00 PM</td>
-                    <td><button class="book-btn">Book</button></td>
+                    <td><button class="book-btn" data-flight="Flight3" data-departure="11:00 AM" data-arrival="02:00 PM">Book</button></td>
                 </tr>
             </tbody>
         </table>
-
-        <h2>Cancel Booked Flights</h2>
-        <table class="cancel-table">
-            <tr>
-                <td>Flight4</td>
-                <td><button class="cancel-btn">Cancel</button></td>
-            </tr>
-        </table>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookButtons = document.querySelectorAll('.book-btn');
+            
+            bookButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const flightName = this.getAttribute('data-flight');
+                    const departure = this.getAttribute('data-departure');
+                    const arrival = this.getAttribute('data-arrival');
+                    
+                    // Store flight details in local storage
+                    localStorage.setItem('selectedFlight', JSON.stringify({ flightName, departure, arrival }));
+                    
+                    // Redirect to payment page
+                    window.location.href = 'payment.html';
+                });
+            });
+        });
+    </script>
 </body>
-
 </html>
