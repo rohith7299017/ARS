@@ -33,28 +33,29 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const bookedFlightsTbody = document.getElementById('booked-flights');
-            const bookingDetails = JSON.parse(localStorage.getItem('bookingDetails')) || {};
+            const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
 
-            if (Object.keys(bookingDetails).length > 0) {
+            bookings.forEach((booking, index) => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${bookingDetails.departure}</td>
-                    <td>${bookingDetails.arrival}</td>
-                    <td>${bookingDetails.date}</td>
-                    <td>${bookingDetails.travelClass}</td>
-                    <td>${bookingDetails.adults}</td>
-                    <td>${bookingDetails.children}</td>
-                    <td>${bookingDetails.infants}</td>
-                    <td><button class="cancel-btn">Cancel</button></td>
+                    <td>${booking.departure}</td>
+                    <td>${booking.arrival}</td>
+                    <td>${booking.date}</td>
+                    <td>${booking.travelClass}</td>
+                    <td>${booking.adults}</td>
+                    <td>${booking.children}</td>
+                    <td>${booking.infants}</td>
+                    <td><button class="cancel-btn" data-index="${index}">Cancel</button></td>
                 `;
                 bookedFlightsTbody.appendChild(row);
-            }
+            });
 
             bookedFlightsTbody.addEventListener('click', function(event) {
                 if (event.target.classList.contains('cancel-btn')) {
-                    bookedFlightsTbody.innerHTML = ''; // Clear the booked flights display
-                    localStorage.removeItem('bookingDetails'); // Remove the booking details from local storage
-                    alert('Booking cancelled.'); // Show a cancellation message
+                    const index = event.target.getAttribute('data-index');
+                    bookings.splice(index, 1); // Remove the canceled flight
+                    localStorage.setItem('bookings', JSON.stringify(bookings));
+                    location.reload(); // Refresh to reflect changes
                 }
             });
         });

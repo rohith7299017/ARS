@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Booking System</title>
     <link rel="stylesheet" href="Booking.css">
 </head>
-
 <body>
     <div class="container">
         <h1 style="font-weight: 600;">Flight Booking</h1>
@@ -15,7 +13,7 @@
             <div class="wrap1">
                 <div>
                     <label for="departure">Departure City:</label>
-                    <select name="from" id="departure" required>
+                    <select name="from" id="departure" required style="padding-right: 30px;">
                         <option value="none">Select city</option>
                         <option value="Delhi">Delhi (DEL)</option>
                         <option value="Mubbai">Mumbai (BOM)</option>
@@ -37,7 +35,7 @@
                 </div>
                 <div>
                     <label for="arrival">Arrival City:</label>
-                    <select name="to" id="arrival" required>
+                    <select name="to" id="arrival" required style="padding-right: 60px;">
                         <option value="none">Select city</option>
                         <option value="Delhi">Delhi (DEL)</option>
                         <option value="Mubbai">Mumbai (BOM)</option>
@@ -60,30 +58,30 @@
             </div>
             <div class="wrap2">
                 <div>
-                    <label for="date">Date:</label>
-                    <input type="date" id="date" name="date" required>
+                    <label for="date" style="padding-right: 65px;">Date:</label>
+                    <input type="date" id="date" name="date" required style="padding-right: 60px;">
                 </div>
                 <div>
-                    <label for="class">Class:</label>
-                    <select name="class" id="class">
+                    <label for="class" style="padding-right: 43px;">Class:</label>
+                    <select name="class" id="class" style="padding-right: 69px;">
                         <option value="none">Select Class</option>
-                        <option value="Economy">Economy</option>
-                        <option value="Business">Business</option>
-                        <option value="Premium Economy">Premium Economy</option>
+                        <option value="e">Economy</option>
+                        <option value="b">Business</option>
+                        <option value="w">Premium Economy</option>
                     </select>
                 </div>
             </div>
             <div class="wrap1">
                 <div>
-                    <label for="adults">Adults:</label>
+                    <label for="adults" style="padding-right: 52px;">Adults:</label>
                     <input type="number" min="0" id="adults" name="adults" required>
                 </div>
                 <div>
-                    <label for="children">Children:</label>
-                    <input type="number" min="0" id="children" name="children">
+                    <label for="children" style="padding-right: 22px;">Children:</label>
+                    <input type="number" min="0" id="children" name="children" style="padding-right: 40px;">
                 </div>
                 <div>
-                    <label for="infants">Infants:</label>
+                    <label for="infants" style="padding-right: 52px;">Infants:</label>
                     <input type="number" min="0" id="infants" name="infants">
                 </div>
             </div>
@@ -92,8 +90,8 @@
         <div id="results"></div>
     </div>
     <script>
-        document.getElementById('bookingForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
             
             const departure = document.getElementById('departure').value;
             const arrival = document.getElementById('arrival').value;
@@ -102,21 +100,16 @@
             const adults = document.getElementById('adults').value;
             const children = document.getElementById('children').value;
             const infants = document.getElementById('infants').value;
+            
+            // Store booking details in local storage as an array of objects
+            const bookingDetails = { departure, arrival, date, travelClass, adults, children, infants };
+            let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+            bookings.push(bookingDetails);
+            localStorage.setItem('bookings', JSON.stringify(bookings));
 
-            const bookingDetails = {
-                departure,
-                arrival,
-                date,
-                travelClass,
-                adults,
-                children,
-                infants
-            };
-
-            localStorage.setItem('bookingDetails', JSON.stringify(bookingDetails));
+            // Redirect to the ViewBookedFlights page
             window.location.href = 'ViewBookedFlights.html';
         });
     </script>
 </body>
-
 </html>
